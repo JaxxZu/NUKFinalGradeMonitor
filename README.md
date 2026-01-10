@@ -44,4 +44,4 @@ $tg_chat_id   = ''; //本人TG id
   <img  width="50%"  src="https://github.com/user-attachments/assets/a7693093-b784-48fe-87c7-45dabab7192b" />
 
 
-本項目使用（ddddocr-fastapi)[https://github.com/sml2h3/ddddocr-fastapi] ，基於 MIT 授權。
+本項目使用 [ddddocr-fastapi](https://github.com/sml2h3/ddddocr-fastapi) ，基於 MIT 授權。
