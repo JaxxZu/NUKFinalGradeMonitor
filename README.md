@@ -15,7 +15,7 @@
 
 ### 二、配置驗證碼自動打碼
 1. 安裝 `sudo apt install -y screen python3-venv python3-pip`  
-2. 啟用虛擬桌面 `screen -S ddddocr`
+2. 啟用screen `screen -S ddddocr`
 3. 下載 ddddocr-fastapi資料夾
 4. cd 到 ddddocr-fastapi資料夾 `cd ./ddddocr-fastapi`  
 5. 配置虛擬環境 `python3 -m venv ddddocr`  
