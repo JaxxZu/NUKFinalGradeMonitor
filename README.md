@@ -1,0 +1,2 @@
+# NUKFinalScoreMonitor
+國立高雄大學期末成績監控通知系統
