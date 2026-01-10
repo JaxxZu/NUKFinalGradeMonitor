@@ -37,3 +37,6 @@ $tg_chat_id   = '';
 
 （可選）查看執行日誌
   <img width="916" height="229" alt="image" src="https://github.com/user-attachments/assets/076fa042-fa55-4222-bfcd-845573d43f0a" />
+
+腳本首次運行及每次成績變化能取得提醒  
+  <img width="787" height="761" alt="image" src="https://github.com/user-attachments/assets/a7693093-b784-48fe-87c7-45dabab7192b" />
