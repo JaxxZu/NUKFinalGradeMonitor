@@ -3,20 +3,19 @@ flowchart TD
 
     B --> C[讀取設定<br>帳號/密碼/TG Bot Token/Chat ID]
 
-    C --> D[嘗試登入 NUK 選課/成績系統]
+    C --> D[存取 NUK 教務系統登入頁]
 
-    D --> F[取得驗證碼圖片]
+    D --> F[取得驗證碼圖片/CSRFToken]
 
-    F --> G[POST 圖片 → localhost:8000 <br>呼叫 ddddocr-fastapi 辨識]
+    F --> G[呼叫 ddddocr-fastapi 辨識<br>POST 圖片 → 127.0.0.1:8000 ]
 
     G --> H[得到辨識結果 驗證碼文字]
 
     H --> I[使用 帳號 + 密碼 + 辨識文字<br>提交登入]
 
-    I --> E
+    I --> |登入失敗| J[結束]
 
-    E -->|登入失敗| J[結束]
-    E -->|登入成功| K[進入成績查詢頁面<br>解析目前所有科目成績]
+    I -->|登入成功| K[進入成績查詢頁面<br>解析目前所有科目成績]
 
     K --> L[與上次紀錄比較]
 
