@@ -1,0 +1,33 @@
+flowchart TD
+    A[cron 執行] --> B[monitor.php 啟動]
+
+    B --> C[讀取設定<br>帳號/密碼/TG Bot Token/Chat ID]
+
+    C --> D[嘗試登入 NUK 選課/成績系統]
+
+    D --> F[取得驗證碼圖片]
+
+    F --> G[POST 圖片 → localhost:8000 <br>呼叫 ddddocr-fastapi 辨識]
+
+    G --> H[得到辨識結果 驗證碼文字]
+
+    H --> I[使用 帳號 + 密碼 + 辨識文字<br>提交登入]
+
+    I --> E
+
+    E -->|登入失敗| J[結束]
+    E -->|登入成功| K[進入成績查詢頁面<br>解析目前所有科目成績]
+
+    K --> L[與上次紀錄比較]
+
+    L -->|相同 / 無變化| M[結束]
+    L -->|有變動 或 首次執行| N[組合訊息<br>課程 + 分數 ]
+
+    N --> O[透過 Telegram Bot 發送通知]
+
+    O --> P[儲存本次成績紀錄]
+
+    P --> Q[結束]
+
+    style A fill:#f9f,stroke:#333
+    style Q fill:#bbf,stroke:#333
