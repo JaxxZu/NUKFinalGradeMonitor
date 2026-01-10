@@ -39,10 +39,15 @@ $tg_chat_id   = ''; //本人TG id
 
 （可選）查看執行日誌  
   <img  width="70%"  src="https://github.com/user-attachments/assets/076fa042-fa55-4222-bfcd-845573d43f0a" />
-  
+
+
 ## 運行結果
 腳本首次運行及每次成績變化能取得提醒    
   <img  width="50%"  src="https://github.com/user-attachments/assets/a7693093-b784-48fe-87c7-45dabab7192b" />
 
 
+## 流程圖
+<img width="1944" height="7793" alt="Mermaid Chart - Create complex, visual diagrams with text -2026-01-10-134051" src="https://github.com/user-attachments/assets/640d0ed9-eebe-4036-8996-c876f9b607e8" />
+
+  
 本項目使用 [ddddocr-fastapi](https://github.com/sml2h3/ddddocr-fastapi) ，基於 MIT 授權。
