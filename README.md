@@ -10,8 +10,9 @@
   
 2. 向bot發送/start  
 <img width="50%" height="839" alt="image" src="https://github.com/user-attachments/assets/099edcaa-00c5-4e3a-8f8d-89071debc4c8" />
+
 3. 使用 @GetAnyUserIDBot 或第三方tg客戶端獲取自己帳號id
-4. 
+
 ### 二、配置驗證碼自動打碼
 1. 安裝 `sudo apt install -y screen python3-venv python3-pip`  
 2. 啟用虛擬桌面 `screen -S ddddocr`
