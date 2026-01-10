@@ -6,10 +6,10 @@
 伺服器運行環境：Ubuntu 24.04、Python 3.12、PHP 7.4  
 ### 一、配置TG BOT
 1. 向 @BotFather 發送 /newbot 創建bot，獲取api密鑰  
-<img width="50%" height="988" alt="image" src="https://github.com/user-attachments/assets/8903c61e-ab25-4c5b-9a47-47b4c9f166aa" />
+  <img width="50%" height="988" alt="image" src="https://github.com/user-attachments/assets/8903c61e-ab25-4c5b-9a47-47b4c9f166aa" />
   
 2. 向bot發送/start  
-<img width="50%" height="839" alt="image" src="https://github.com/user-attachments/assets/099edcaa-00c5-4e3a-8f8d-89071debc4c8" />
+  <img width="50%" height="839" alt="image" src="https://github.com/user-attachments/assets/099edcaa-00c5-4e3a-8f8d-89071debc4c8" />
 
 3. 使用 @GetAnyUserIDBot 或第三方tg客戶端獲取自己帳號id
 
@@ -25,3 +25,12 @@
 運行後，打碼服務使用8000端口對本機開放
 
 ### 三、配置監控主程式
+1. 填寫腳本：
+```php
+$stu_id       = '';                      
+$password     = '';                      
+$tg_bot_token = '';        
+$tg_chat_id   = '';            
+```   
+2. 使用cron定時執行php腳本
+   ``
