@@ -2,6 +2,8 @@
 國立高雄大學期末成績監控通知系統
 
 ## 自行部署教程
+以Linux伺服器為例  
+伺服器運行環境：Ubuntu 24.04、Python 3.12、PHP 7.4  
 ### 一、配置TG BOT
 1. 向 @BotFather 發送 /newbot 創建bot，獲取api密鑰  
 <img width="50%" height="988" alt="image" src="https://github.com/user-attachments/assets/8903c61e-ab25-4c5b-9a47-47b4c9f166aa" />
@@ -19,3 +21,5 @@
 7. `pip install -r requirements.txt`  
 8. 運行ddddocr自動打碼`python3 -m app.main`
 運行後，打碼服務使用8000端口對本機開放
+
+### 三、配置監控主程式
