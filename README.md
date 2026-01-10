@@ -11,7 +11,7 @@
 2. 向bot發送/start  
   <img  width="50%"  alt="image" src="https://github.com/user-attachments/assets/099edcaa-00c5-4e3a-8f8d-89071debc4c8" />
 
-3. 使用 @GetAnyUserIDBot 或第三方tg客戶端獲取自己帳號id
+3. 使用 @GetAnyUserIDBot 或第三方tg客戶端獲取自己TG帳號id
 
 ### 二、配置驗證碼自動打碼
 1. 安裝 `sudo apt install -y screen python3-venv python3-pip`  
@@ -31,7 +31,7 @@
 $stu_id       = ''; //學號                     
 $password     = ''; //選課平台密碼                     
 $tg_bot_token = ''; //tg bot api密鑰       
-$tg_chat_id   = ''; //本人TG id           
+$tg_chat_id   = ''; //TG id(人/頻道/群)           
 ```   
 2. 使用cron定時執行php腳本（每59分鐘檢查一次）  
    `*/59 * * * * /path/to/php /path/to/script`或使用圖形化界面  
