@@ -33,4 +33,7 @@ $tg_bot_token = '';
 $tg_chat_id   = '';            
 ```   
 2. 使用cron定時執行php腳本  
-<img width="802" height="359" alt="image" src="https://github.com/user-attachments/assets/65c86d03-b2bd-45f1-ad6c-f08a35aa88f8" />
+  <img width="802" height="359" alt="image" src="https://github.com/user-attachments/assets/65c86d03-b2bd-45f1-ad6c-f08a35aa88f8" />
+
+（可選）查看執行日誌
+  <img width="916" height="229" alt="image" src="https://github.com/user-attachments/assets/076fa042-fa55-4222-bfcd-845573d43f0a" />
