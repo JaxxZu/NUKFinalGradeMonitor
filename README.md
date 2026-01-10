@@ -6,10 +6,10 @@
 伺服器運行環境：Ubuntu 24.04、Python 3.12、PHP 7.4  
 ### 一、配置TG BOT
 1. 向 @BotFather 發送 /newbot 創建bot，獲取api密鑰  
-  <img width="50%" height="988" alt="image" src="https://github.com/user-attachments/assets/8903c61e-ab25-4c5b-9a47-47b4c9f166aa" />
+  <img width="50%" alt="image" src="https://github.com/user-attachments/assets/8903c61e-ab25-4c5b-9a47-47b4c9f166aa" />
   
 2. 向bot發送/start  
-  <img width="50%" height="839" alt="image" src="https://github.com/user-attachments/assets/099edcaa-00c5-4e3a-8f8d-89071debc4c8" />
+  <img  width="50%"  alt="image" src="https://github.com/user-attachments/assets/099edcaa-00c5-4e3a-8f8d-89071debc4c8" />
 
 3. 使用 @GetAnyUserIDBot 或第三方tg客戶端獲取自己帳號id
 
@@ -33,10 +33,10 @@ $tg_bot_token = ''; //tg bot api密鑰
 $tg_chat_id   = ''; //本人TG id           
 ```   
 2. 使用cron定時執行php腳本  
-  <img width="802" height="359" alt="image" src="https://github.com/user-attachments/assets/65c86d03-b2bd-45f1-ad6c-f08a35aa88f8" />
+  <img  width="50%"  src="https://github.com/user-attachments/assets/65c86d03-b2bd-45f1-ad6c-f08a35aa88f8" />
 
 （可選）查看執行日誌
-  <img width="916" height="229" alt="image" src="https://github.com/user-attachments/assets/076fa042-fa55-4222-bfcd-845573d43f0a" />
+  <img  width="50%"  src="https://github.com/user-attachments/assets/076fa042-fa55-4222-bfcd-845573d43f0a" />
 
 腳本首次運行及每次成績變化能取得提醒  
-  <img width="787" height="761" alt="image" src="https://github.com/user-attachments/assets/a7693093-b784-48fe-87c7-45dabab7192b" />
+  <img  width="50%"  src="https://github.com/user-attachments/assets/a7693093-b784-48fe-87c7-45dabab7192b" />
