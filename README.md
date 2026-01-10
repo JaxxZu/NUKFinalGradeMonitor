@@ -19,7 +19,7 @@
 3. `git clone https://github.com/JaxxZu/NUKFinalScoreMonitor.git`
 4. cd 到 ddddocr-fastapi資料夾 `cd ./ddddocr-fastapi`  
 5. 配置虛擬環境 `python3 -m venv ddddocr`  
-6. 激活虛擬環境 `source ddddocr/bin/activate `  
+6. 激活虛擬環境 `source ddddocr/bin/activate`   
 7. `pip install -r requirements.txt`  
 8. 運行ddddocr自動打碼`python3 -m app.main`
 
