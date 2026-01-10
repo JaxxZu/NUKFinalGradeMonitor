@@ -47,7 +47,7 @@ $tg_chat_id   = ''; //本人TG id
 
 
 ## 流程圖
-<img width="48%" alt="Mermaid Chart - Create complex, visual diagrams with text -2026-01-10-134051" src="https://github.com/user-attachments/assets/640d0ed9-eebe-4036-8996-c876f9b607e8" />
+<img width="48%" alt="Mermaid Chart - Create complex, visual diagrams with text -2026-01-10-134051" src="./flowchart.png" />
 
 
     
