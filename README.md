@@ -33,7 +33,7 @@ $password     = ''; //選課平台密碼
 $tg_bot_token = ''; //tg bot api密鑰       
 $tg_chat_id   = ''; //本人TG id           
 ```   
-2. 使用cron定時執行php腳本  
+2. 使用cron定時執行php腳本（每59分鐘檢查一次）  
    `*/59 * * * * /path/to/php /path/to/script`或使用圖形化界面  
   <img  width="70%"  src="https://github.com/user-attachments/assets/65c86d03-b2bd-45f1-ad6c-f08a35aa88f8" />
 
