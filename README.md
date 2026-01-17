@@ -55,4 +55,4 @@ $tg_chat_id   = ''; //TG id(人/頻道/群)
 
 
     
-本項目使用 [ddddocr-fastapi](https://github.com/sml2h3/ddddocr-fastapi) ，基於 MIT 授權。
+本項目使用 [ddddocr-fastapi](https://github.com/sml2h3/ddddocr-fastapi) 進行自動打碼，基於 MIT 授權。
