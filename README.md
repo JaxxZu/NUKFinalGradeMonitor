@@ -8,7 +8,7 @@
 以Linux伺服器為例  
 伺服器運行環境：Ubuntu 24.04、Python 3.12、PHP 7.4  
 ### 一、配置TG BOT
-1. 向 @BotFather 發送 /newbot 創建bot，獲取api密鑰  
+1. 向 [@BotFather](https://t.me/BotFather) 發送 /newbot 創建bot，獲取api密鑰  
   <img width="50%" alt="image" src="https://github.com/user-attachments/assets/8903c61e-ab25-4c5b-9a47-47b4c9f166aa" />
   
 2. 向bot發送/start  
