@@ -46,8 +46,8 @@ $tg_chat_id   = ''; //TG id(人/頻道/群)
 
 ## 運行結果
 腳本首次運行及每次成績變化能取得提醒    
-  <img  width="50%"  src="https://github.com/user-attachments/assets/a7693093-b784-48fe-87c7-45dabab7192b" />
-
+<img width="50%" src="https://github.com/user-attachments/assets/a3c8af02-1d20-4629-b119-22967fa9eccf" />
+  
 
 ## 流程圖
 <img width="48%" alt="Mermaid Chart - Create complex, visual diagrams with text -2026-01-10-134051" src="./flowchart.png" />
