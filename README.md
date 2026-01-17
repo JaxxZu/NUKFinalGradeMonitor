@@ -20,7 +20,7 @@
 1. 安裝 `sudo apt install -y screen python3-venv python3-pip`  
 2. 啟用screen `screen -S ddddocr`
 3. `git clone https://github.com/JaxxZu/NUKFinalScoreMonitor.git`
-4. cd 到 ddddocr-fastapi資料夾 `cd ./ddddocr-fastapi`  
+4. cd 到 ddddocr-fastapi資料夾 `cd ./NUKFinalGradeMonitor/ddddocr-fastapi`  
 5. 配置虛擬環境 `python3 -m venv ddddocr`  
 6. 激活虛擬環境 `source ddddocr/bin/activate`   
 7. `pip install -r requirements.txt`  
@@ -37,7 +37,7 @@ $tg_bot_token = ''; //tg bot api密鑰
 $tg_chat_id   = ''; //TG id(人/頻道/群)
 ```   
 2. 使用cron定時執行php腳本（每59分鐘檢查一次）  
-   `*/59 * * * * /path/to/php /path/to/script`  
+   `*/59 * * * * /path/to/php /path/to/NUKFinalGradeMonitor/monitor.php`  
    或使用圖形化界面(示範使用aapanel)  
   <img  width="70%"  src="https://github.com/user-attachments/assets/65c86d03-b2bd-45f1-ad6c-f08a35aa88f8" />
 
