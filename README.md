@@ -41,6 +41,8 @@ $tg_chat_id   = ''; //TG id(人/頻道/群)
    或使用圖形化界面 (示範使用aapanel)  
   <img  width="70%"  src="https://github.com/user-attachments/assets/65c86d03-b2bd-45f1-ad6c-f08a35aa88f8" />
 
+  *注：時間間隔過短有機率觸發學校防火牆
+
 （可選）查看執行日誌  
   <img  width="70%"  src="https://github.com/user-attachments/assets/076fa042-fa55-4222-bfcd-845573d43f0a" />
 
