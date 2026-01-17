@@ -56,5 +56,8 @@ $tg_chat_id   = ''; //TG id(人/頻道/群)
 <img width="48%" alt="Mermaid Chart - Create complex, visual diagrams with text -2026-01-10-134051" src="./flowchart.png" />
 
 
+## 注意事項
+校外網路存取教務系統登入頁會跳驗證碼，所以需要打碼  
+本程式未對校內網路或使用學校VPN情況下，登入頁沒有驗證碼的情況下進行測試  
     
 本項目使用 [ddddocr-fastapi](https://github.com/sml2h3/ddddocr-fastapi) 進行自動打碼，基於 MIT 授權。
