@@ -31,10 +31,10 @@
 ### 三、配置監控主程式
 1. 填寫腳本：
 ```php
-$stu_id       = ''; //學號                     
-$password     = ''; //選課平台密碼                     
-$tg_bot_token = ''; //tg bot api密鑰       
-$tg_chat_id   = ''; //TG id(人/頻道/群)           
+$stu_id       = ''; //學號
+$password     = ''; //選課平台密碼
+$tg_bot_token = ''; //tg bot api密鑰
+$tg_chat_id   = ''; //TG id(人/頻道/群)
 ```   
 2. 使用cron定時執行php腳本（每59分鐘檢查一次）  
    `*/59 * * * * /path/to/php /path/to/script`或使用圖形化界面  
