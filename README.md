@@ -26,7 +26,7 @@
 7. `pip install -r requirements.txt`  
 8. 運行ddddocr自動打碼`python3 -m app.main`
 
-運行後，打碼服務使用8000端口對本機開放
+運行後，打碼服務使用8000埠對本機開放
 
 ### 三、配置監控主程式
 1. 填寫腳本：
