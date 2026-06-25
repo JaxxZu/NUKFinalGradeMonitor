@@ -1,3 +1,4 @@
+
 flowchart TD
     A[cron 執行] --> B[monitor.php 啟動]
 
@@ -7,20 +8,35 @@ flowchart TD
 
     D --> F[取得驗證碼圖片/CSRFToken]
 
-    F --> G[呼叫 ddddocr-fastapi 辨識<br>POST 圖片 → 127.0.0.1:8000 ]
+    F --> G[呼叫 ddddocr-fastapi 辨識<br>POST 驗證碼圖片 → 127.0.0.1:8000]
 
-    G --> H[得到辨識結果 驗證碼文字]
+    subgraph OCR[ddddocr-fastapi 執行流程]
+        G --> G1[FastAPI 接收圖片請求]
+        G1 --> G2[讀取圖片內容<br>bytes/base64]
+        G2 --> G3[建立或呼叫 DdddOcr]
+        G3 --> G4[對驗證碼圖片進行辨識]
+        G4 --> G5[產生辨識結果<br>驗證碼文字]
+        G5 --> G6[回傳 JSON 結果給 <br>monitor.php]
+    end
 
-    H --> I[使用 帳號 + 密碼 + 辨識文字<br>提交登入]
+    G6 --> H[monitor.php 取得辨識結果<br>驗證碼文字]
 
-    I --> |登入失敗| J[結束]
+    H --> H1{辨識結果是否有效}
+
+    H1 -->|無效 / 空值 / 格式錯誤| H2[重新取得驗證碼圖片]
+    H2 --> F
+
+    H1 -->|有效| I[使用 帳號 + 密碼 + 辨識文字<br>提交登入]
+
+    I -->|登入失敗| J[結束]
 
     I -->|登入成功| K[進入成績查詢頁面<br>解析目前所有科目成績]
 
     K --> L[與上次紀錄比較]
 
     L -->|相同 / 無變化| M[結束]
-    L -->|有變動 或 首次執行| N[組合訊息<br>課程 + 分數 ]
+
+    L -->|有變動 或 首次執行| N[組合訊息<br>課程 + 分數]
 
     N --> O[透過 Telegram Bot 發送通知]
 
