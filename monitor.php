@@ -1,9 +1,13 @@
 <?php
+if (PHP_SAPI !== 'cli') {
+    exit;
+}
 
 $stu_id       = '';                      
 $password     = '';                      
 $tg_bot_token = '';        
 $tg_chat_id   = '';            
+
 
 $baseUrl      = 'https://aca.nuk.edu.tw/Student2/';
 $loginPage    = $baseUrl . 'login.asp';
@@ -50,13 +54,13 @@ function request($url, $postData = null, $referer = '') {
 }
 
 // ================= 登入流程（與你原版相同，略作整理） =================
-echo "[" . date('Y-m-d H:i:s') . "] 開始執行成績檢查...<br>";
+echo "[" . date('Y-m-d H:i:s') . "] 開始執行成績檢查...\n";
 
 $html_big5 = request($loginPage);
 $html = iconv('BIG5', 'UTF-8//IGNORE', $html_big5);
 
 if (strpos($html, 'CSRFToken') === false) {
-    die("[" . date('Y-m-d H:i:s') . "] 登入頁面異常，無法找到 CSRFToken<br>");
+    die("[" . date('Y-m-d H:i:s') . "] 登入頁面異常，無法找到 CSRFToken\n");
 }
 
 preg_match('/name\s*=\s*["\']CSRFToken["\']\s*[^>]*value\s*=\s*["\']([^"\']+)["\']/i', $html, $m);
@@ -70,7 +74,7 @@ foreach ($matches as $match) {
 }
 
 preg_match('/id=["\']Certify_Image["\'][^>]*src=["\']([^"\']+)["\']/i', $html, $m);
-$captchaUrl = $m[1] ?? die("找不到驗證碼圖片<br>");
+$captchaUrl = $m[1] ?? die("找不到驗證碼圖片\n");
 $captchaUrl = strpos($captchaUrl, 'http') === 0 ? $captchaUrl : $baseUrl . $captchaUrl;
 
 $captchaBinary = request($captchaUrl);
@@ -92,7 +96,7 @@ $ocr = json_decode($ocrResponse, true);
 $code = trim($ocr['data'] ?? $ocr['result'] ?? '');
 
 if (strlen($code) < 3) {
-    die("[" . date('Y-m-d H:i:s') . "] 驗證碼辨識失敗<br>");
+    die("[" . date('Y-m-d H:i:s') . "] 驗證碼辨識失敗\n");
 }
 
 $postFields = [
@@ -108,10 +112,10 @@ $result_big5 = request($loginAction, $postData, $loginPage);
 $result = iconv('BIG5', 'UTF-8//IGNORE', $result_big5);
 
 if (stripos($result, '登入失敗') !== false || stripos($result, '驗證碼錯誤') !== false) {
-    die("[" . date('Y-m-d H:i:s') . "] 登入失敗<br>");
+    die("[" . date('Y-m-d H:i:s') . "] 登入失敗\n");
 }
 
-echo "[" . date('Y-m-d H:i:s') . "] 登入成功<br>";
+echo "[" . date('Y-m-d H:i:s') . "] 登入成功\n";
 
 // ================= 直接查詢成績 =================
 $scoreUrl = $baseUrl . 'SO/ScoreQuery.asp';
@@ -124,25 +128,25 @@ $postData = http_build_query($postParams);
 $score_big5 = request($scoreUrl, $postData, $baseUrl . 'SO/SOMenu.asp');
 $scoreHtml = iconv('BIG5', 'UTF-8//IGNORE', $score_big5);
 // ================= 加強 debug =================
-echo "[" . date('Y-m-d H:i:s') . "] 成績頁面取得成功，長度: " . strlen($scoreHtml) . " bytes<br>";
+echo "[" . date('Y-m-d H:i:s') . "] 成績頁面取得成功，長度: " . strlen($scoreHtml) . " bytes\n";
 
 // debug:儲存完整成績頁面原始碼（非常重要！）
 //$debug_file = 'debug_score_' . date('Ymd_His') . '.html';
 //file_put_contents($debug_file, $scoreHtml);
-//echo "[" . date('Y-m-d H:i:s') . "] 完整成績頁面已存為: $debug_file<br>";
+//echo "[" . date('Y-m-d H:i:s') . "] 完整成績頁面已存為: $debug_file\n";
 
 // 搜尋關鍵字出現次數（幫助判斷是否有成績表格）
 //$keywords = ['成績', '學期成績', '科目', '未送', 'border="1"', 'cellpadding="0"', 'cellspacing="0"', 'width="100%"', '新細明體'];
 //foreach ($keywords as $kw) {
 //    $count = substr_count($scoreHtml, $kw);
-//    echo "關鍵字 '$kw' 出現次數: $count<br>";
+//    echo "關鍵字 '$kw' 出現次數: $count\n";
 //}
 
 // 如果有 border="1"，只列出最後一個出現位置（幫助定位）
 if (preg_match_all('/<table[^>]*border\s*=\s*["\']?1["\']?/i', $scoreHtml, $m, PREG_OFFSET_CAPTURE)) {
 
     $count = count($m[0]);
-    echo "找到 {$count} 個 border 相關的 table ({$count}個學期成績)<br>";
+    echo "找到 {$count} 個 border 相關的 table ({$count}個學期成績)\n";
 
     // 取最後一個
     $lastMatch = $m[0][$count - 1];
@@ -151,10 +155,10 @@ if (preg_match_all('/<table[^>]*border\s*=\s*["\']?1["\']?/i', $scoreHtml, $m, P
     $snippet = substr($scoreHtml, max(0, $pos - 80), 200);
     $snippet = str_replace(["\r", "<br>"], ' ', $snippet);
 
-    echo "最後一個 table 位置 {$pos} 附近片段: ...{$snippet}...<br>";
+    echo "最後一個 table 位置 {$pos} 附近片段: ...{$snippet}...\n";
 
 } else {
-    echo "完全沒有找到任何 border 相關的 table 標籤<br>";
+    echo "完全沒有找到任何 border 相關的 table 標籤\n";
 }
 
 // ================= 提取最後一學期成績表格 =================
@@ -165,12 +169,12 @@ $pattern = '/<table\s+border="1"\s+cellpadding="0"\s+cellspacing="0"\s+width="10
 preg_match_all($pattern, $scoreHtml, $matches, PREG_OFFSET_CAPTURE);
 
 if (empty($matches[0])) {
-    echo "[" . date('Y-m-d H:i:s') . "] 找不到符合條件的成績表格<br>";
+    echo "[" . date('Y-m-d H:i:s') . "] 找不到符合條件的成績表格\n";
     exit;
 }
 
 $tableCount = count($matches[0]);
-echo "[" . date('Y-m-d H:i:s') . "] 找到 $tableCount 個符合條件的 table<br>";
+echo "[" . date('Y-m-d H:i:s') . "] 找到 $tableCount 個符合條件的 table\n";
 
 // 取最後一個 table 的完整 HTML
 $lastStartPos = end($matches[0])[1];
@@ -192,11 +196,11 @@ $previous_html = file_exists($html_file) ? file_get_contents($html_file) : '';
 // 比對完整 HTML 內容（已清理）
 
 if (trim($lastTableHtml) !== trim($previous_html)) {
-    echo "[" . date('Y-m-d H:i:s') . "] 最後一學期成績表格有變動！<br>";
+    echo "[" . date('Y-m-d H:i:s') . "] 最後一學期成績表格有變動！\n";
     
     // 更新檔案為最新版本
     file_put_contents($html_file, $lastTableHtml);
-    echo "已更新 last_semester_table.html 為最新版本<br>";
+    echo "已更新 last_semester_table.html 為最新版本\n";
 
     // 解析表格成純文字成績列表（課程名稱 + 學期成績）
        // 解析表格成純文字成績列表（課程名稱 + 學期成績）
@@ -286,13 +290,14 @@ foreach ($rows as $row) {
 
     $tg_response = json_decode($tg_result, true);
     if ($tg_response['ok'] ?? false) {
-        echo "[" . date('Y-m-d H:i:s') . "] Telegram 通知發送成功（已包含所有課程的學期成績）<br>";
+        echo "[" . date('Y-m-d H:i:s') . "] Telegram 通知發送成功（已包含所有課程的學期成績）\n";
     } else {
-        echo "[" . date('Y-m-d H:i:s') . "] Telegram 通知發送失敗: " . ($tg_response['description'] ?? '未知錯誤') . "<br>";
+        echo "[" . date('Y-m-d H:i:s') . "] Telegram 通知發送失敗: " . ($tg_response['description'] ?? '未知錯誤') . "\n";
     }
 } else {
-    echo "[" . date('Y-m-d H:i:s') . "] 最後一學期成績表格無變化<br>";
+    echo "[" . date('Y-m-d H:i:s') . "] 最後一學期成績表格無變化\n";
 }
 
-echo "[" . date('Y-m-d H:i:s') . "] 本次執行結束<br>";
+echo "[" . date('Y-m-d H:i:s') . "] 本次執行結束\n";
+
 
