@@ -5,8 +5,11 @@
 定期、自動登入國立高雄大學教務平台獲取期末成績，若偵測到任何一科成績出分，立即透過 Telegram 傳送通知
 
 ## 自行部署教程
-以Linux伺服器為例  
-伺服器運行環境：Ubuntu 24.04、Python 3.12、PHP 7.4  
+以Linux伺服器為例    
+伺服器運行環境：  
+Ubuntu 24.04+Python 3.12+PHP 7.4  
+Ubuntu 22.04+Python 3.10+PHP 8.3  
+  
 ### 一、配置TG BOT
 1. 向 [@BotFather](https://t.me/BotFather) 發送 /newbot 創建bot，獲取api密鑰  
   <img width="50%" alt="image" src="https://github.com/user-attachments/assets/8903c61e-ab25-4c5b-9a47-47b4c9f166aa" />
