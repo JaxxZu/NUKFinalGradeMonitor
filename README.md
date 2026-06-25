@@ -26,6 +26,10 @@
 7. `pip install -r requirements.txt`  
 8. 運行ddddocr自動打碼`python3 -m app.main`
 
+
+
+<img width="1674" height="1011" alt="image" src="https://github.com/user-attachments/assets/7777c6ed-4c35-4c74-a5d3-906faba89875" />
+
 運行後，打碼服務使用8000埠對本機開放
 
 ### 三、配置監控主程式
