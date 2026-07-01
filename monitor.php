@@ -238,7 +238,7 @@ $courseIndex = $headerMap['課程名稱'] ?? null;
 $scoreIndex  = $headerMap['學期成績'] ?? null;
 
 if ($courseIndex === null || $scoreIndex === null) {
-    $score_list = "解析失敗，找不到「課程名稱」或「{$scoreColumnName}」欄位\n";
+    $score_list = "解析失敗，找不到「課程名稱」或「學期成績」欄位\n";
 } else {
     foreach ($rows as $row) {
 
