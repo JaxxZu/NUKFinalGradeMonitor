@@ -2,12 +2,11 @@
 if (PHP_SAPI !== 'cli') {
     exit;
 }
-
 $stu_id       = '';                      
 $password     = '';                      
-$tg_bot_token = '';        
-$tg_chat_id   = '';            
-
+$tg_chat_id= '';        
+$tg_bot_token= '';            
+   
 
 $baseUrl      = 'https://aca.nuk.edu.tw/Student2/';
 $loginPage    = $baseUrl . 'login.asp';
@@ -214,39 +213,62 @@ if (trim($lastTableHtml) !== trim($previous_html)) {
  
  $score_list = "";
 
+// 先建立表頭欄位名稱對應索引
+$headerMap = [];
+
 foreach ($rows as $row) {
+    $ths = $row->getElementsByTagName('th');
 
-    // 如果這一列有 <th>，代表是標題列，直接跳過
-    if ($row->getElementsByTagName('th')->length > 0) {
-        continue;
+    if ($ths->length > 0) {
+        foreach ($ths as $index => $th) {
+            $headerText = trim($th->textContent);
+
+            // 清理一般空白與全形空白，例如「備　註」
+            $headerText = preg_replace('/\s+/u', '', $headerText);
+
+            $headerMap[$headerText] = $index;
+        }
+
+        break;
     }
-
-    // 取得所有 td（照 DOM 實際順序）
-    $tds = $row->getElementsByTagName('td');
-
-    // 成績資料列一定至少有 6 個 td
-    if ($tds->length < 6) {
-        continue;
-    }
-
-    // 依照實際表格結構取值（不要再用動態 array）
-    $course = trim($tds->item(1)->textContent);      // 課程名稱
-    $final_score = trim($tds->item(5)->textContent); // 學期成績
-
-    // 清理多餘空白
-    $course = preg_replace('/\s+/', ' ', $course);
-    $final_score = preg_replace('/\s+/', ' ', $final_score);
-
-    // 防呆（真的抓不到才跳）
-    if ($course === '' || $final_score === '') {
-        continue;
-    }
-
-    $score_list .= "{$course}：{$final_score}\n";
 }
 
- 
- 
+
+$courseIndex = $headerMap['課程名稱'] ?? null;
+$scoreIndex  = $headerMap['學期成績'] ?? null;
+
+if ($courseIndex === null || $scoreIndex === null) {
+    $score_list = "解析失敗，找不到「課程名稱」或「{$scoreColumnName}」欄位\n";
+} else {
+    foreach ($rows as $row) {
+
+        // 如果這一列有 <th>，代表是標題列，直接跳過
+        if ($row->getElementsByTagName('th')->length > 0) {
+            continue;
+        }
+
+        $tds = $row->getElementsByTagName('td');
+
+        // 防止欄位數不足
+        if ($tds->length <= max($courseIndex, $scoreIndex)) {
+            continue;
+        }
+
+        $course = trim($tds->item($courseIndex)->textContent);
+        $final_score = trim($tds->item($scoreIndex)->textContent);
+
+        // 清理多餘空白
+        $course = preg_replace('/\s+/', ' ', $course);
+        $final_score = preg_replace('/\s+/', ' ', $final_score);
+
+        if ($course === '' || $final_score === '') {
+            continue;
+        }
+
+        $score_list .= "{$course}：{$final_score}\n";
+    }
+}
+
  
  
  
@@ -299,5 +321,4 @@ foreach ($rows as $row) {
 }
 
 echo "[" . date('Y-m-d H:i:s') . "] 本次執行結束\n";
-
 
